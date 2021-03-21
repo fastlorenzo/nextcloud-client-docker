@@ -24,7 +24,7 @@ ENV PGID=1000 \
 
 # update repositories and install nextcloud-client
 RUN apk update && \
-  apk add --no-cache nextcloud-client su-exec shadow && \
+  apk add --no-cache nextcloud-client su-exec && \
   rm -rf /etc/apk/cache
 
 # Create ncsync user and group (from linuxserver.io setup)
