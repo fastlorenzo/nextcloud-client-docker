@@ -86,8 +86,8 @@ replace:
 | NC_INTERVAL   | Sets the interval between syncs in seconds                                                                                         | `300` (5 minutes)   |
 | NC_EXIT       | If "true" the sync will happen once and then the container will exit, very useful for using in conjunction with cron or schedulers | `false`             |
 | USER          | The system user inside the container you want to use for running the sync                                                          | `ncsync`            |
-| USER_GID      | The system user group id inside the container you want to use for running the sync                                                 | `1000`              |
-| USER_UID      | The system user id inside the container you want to use for running the sync                                                       | `1000`              |
+| PGID          | The system user group id inside the container you want to use for running the sync                                                 | `911`               |
+| PUID          | The system user id inside the container you want to use for running the sync                                                       | `911`               |
 | NC_TRUST_CERT | Whether or not trust self signed certificates or invalid certificates                                                              | `false`             |
 | NC_HIDDEN     | Whether or not NextCloud should be forced to sync hidden files                                                                     | `false`             |
 
