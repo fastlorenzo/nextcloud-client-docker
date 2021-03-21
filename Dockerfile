@@ -19,17 +19,19 @@ ENV PGID=1000 \
   NC_EXIT=false   \
   NC_HIDDEN=false
 
-# Create ncsync user and group (from linuxserver.io setup)
-RUN groupmod -g 911 ncsync && \
-  useradd -u 911 -U -d /media/next -s /bin/false ncsync && \
-  usermod -G ncsync ncsync
+
 #RUN addgroup -g $USER_GID $USER && adduser -G $USER -D -u $USER_UID $USER
 
 # update repositories and install nextcloud-client
 RUN apk update && \
-  apk add --no-cache nextcloud-client su-exec && \
+  apk add --no-cache nextcloud-client su-exec shadow && \
   rm -rf /etc/apk/cache
 
+# Create ncsync user and group (from linuxserver.io setup)
+RUN groupmod -g 911 ncsync && \
+  useradd -u 911 -U -d /media/next -s /bin/false ncsync && \
+  usermod -G ncsync ncsync
+  
 # add run script
 ADD run.sh /usr/bin/run.sh
 
