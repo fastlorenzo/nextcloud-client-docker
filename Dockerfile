@@ -28,10 +28,9 @@ RUN apk update && \
   rm -rf /etc/apk/cache
 
 # Create ncsync user and group (from linuxserver.io setup)
-RUN groupmod -g 911 ncsync && \
-  useradd -u 911 -U -d /media/next -s /bin/false ncsync && \
-  usermod -G ncsync ncsync
-  
+RUN addgroup -g 911 ncsync && \
+  adduser -G ncsync -D -u 911 ncsync
+
 # add run script
 ADD run.sh /usr/bin/run.sh
 
